@@ -1,0 +1,203 @@
+{
+  "projet": "Formulaire AGEFICE 2025 - GitHub Pages",
+  "version": "1.0.0",
+  "date_maj": "2025-01-24",
+  "statut_global": "PRET_POUR_DEPLOIEMENT",
+  
+  "fichiers_requis": {
+    "index.html": {
+      "statut": "✅ CREE",
+      "taille_estimee": "5KB",
+      "dependances": ["style.css", "script.js", "Adobe PDF Embed API"],
+      "critical": true
+    },
+    "style.css": {
+      "statut": "✅ CREE",
+      "taille_estimee": "15KB",
+      "dependances": [],
+      "critical": true
+    },
+    "script.js": {
+      "statut": "✅ CREE",
+      "taille_estimee": "12KB",
+      "dependances": ["Adobe PDF Embed API"],
+      "critical": true,
+      "configuration_requise": {
+        "ADOBE_CLIENT_ID": "⚠️ A CONFIGURER",
+        "EMAIL_SERVICE_ID": "⚠️ A CONFIGURER",
+        "EMAIL_TEMPLATE_ID": "⚠️ A CONFIGURER",
+        "EMAIL_USER_ID": "⚠️ A CONFIGURER"
+      }
+    },
+    "AGEFICE-Demande-de-prise-en-charge-2025 PRE REMPLIE.pdf": {
+      "statut": "✅ EXISTE_SUR_GITHUB",
+      "taille": "766KB",
+      "url": "https://github.com/saloua40/formulaire_pdf/blob/main/AGEFICE-Demande-de-prise-en-charge-2025%20PRE%20REMPLIE.pdf",
+      "critical": true
+    },
+    "README.md": {
+      "statut": "✅ CREE",
+      "taille_estimee": "8KB",
+      "critical": false
+    }
+  },
+
+  "etapes_deploiement": {
+    "etape_1": {
+      "titre": "Upload des fichiers sur GitHub",
+      "actions": [
+        "Remplacer index.html actuel par la nouvelle version",
+        "Ajouter style.css (si absent)",
+        "Ajouter script.js (si absent)",
+        "Ajouter README.md"
+      ],
+      "statut": "⏳ EN_ATTENTE",
+      "bloquant": true
+    },
+    "etape_2": {
+      "titre": "Configuration Adobe PDF Embed",
+      "actions": [
+        "Créer compte Adobe Developer",
+        "Obtenir Client ID pour PDF Embed API",
+        "Modifier script.js ligne 2",
+        "Commit et push sur GitHub"
+      ],
+      "statut": "⏳ EN_ATTENTE",
+      "bloquant": true
+    },
+    "etape_3": {
+      "titre": "Configuration EmailJS",
+      "actions": [
+        "Créer compte EmailJS",
+        "Configurer service email",
+        "Créer template email",
+        "Récupérer Service ID, Template ID, User ID",
+        "Modifier script.js lignes 3-5",
+        "Commit et push sur GitHub"
+      ],
+      "statut": "⏳ EN_ATTENTE",
+      "bloquant": false,
+      "note": "Non bloquant pour l'affichage du formulaire"
+    },
+    "etape_4": {
+      "titre": "Test GitHub Pages",
+      "actions": [
+        "Vérifier https://saloua40.github.io/formulaire_pdf/",
+        "Tester affichage du PDF",
+        "Tester remplissage des champs",
+        "Tester upload pièces jointes",
+        "Tester validation RGPD"
+      ],
+      "statut": "⏳ EN_ATTENTE",
+      "bloquant": true
+    },
+    "etape_5": {
+      "titre": "Intégration Hostinger",
+      "actions": [
+        "Ouvrir Hostinger AI Builder",
+        "Ajouter section HTML personnalisée",
+        "Copier code iframe depuis README",
+        "Ajuster hauteur selon appareil",
+        "Tester preview",
+        "Publier le site"
+      ],
+      "statut": "⏳ EN_ATTENTE",
+      "bloquant": false
+    }
+  },
+
+  "criteres_validation": {
+    "affichage_pdf": {
+      "description": "Le PDF AGEFICE s'affiche correctement",
+      "priorite": "CRITIQUE",
+      "statut": "⏳ NON_TESTE"
+    },
+    "champs_interactifs": {
+      "description": "Les champs du PDF sont cliquables et modifiables",
+      "priorite": "CRITIQUE",
+      "statut": "⏳ NON_TESTE"
+    },
+    "upload_fichiers": {
+      "description": "Les 8 pièces jointes peuvent être uploadées",
+      "priorite": "CRITIQUE",
+      "statut": "⏳ NON_TESTE"
+    },
+    "validation_formulaire": {
+      "description": "La validation bloque tant que tout n'est pas rempli",
+      "priorite": "CRITIQUE",
+      "statut": "⏳ NON_TESTE"
+    },
+    "barre_progression": {
+      "description": "La barre de progression se met à jour en temps réel",
+      "priorite": "MOYENNE",
+      "statut": "⏳ NON_TESTE"
+    },
+    "rgpd_consent": {
+      "description": "La checkbox RGPD doit être cochée pour activer le bouton",
+      "priorite": "CRITIQUE",
+      "statut": "⏳ NON_TESTE"
+    },
+    "envoi_email": {
+      "description": "L'envoi par email fonctionne avec pièces jointes",
+      "priorite": "CRITIQUE",
+      "statut": "⏳ NON_TESTE",
+      "depends_on": "Configuration EmailJS"
+    },
+    "responsive": {
+      "description": "Le formulaire s'adapte correctement sur mobile/tablette/desktop",
+      "priorite": "HAUTE",
+      "statut": "⏳ NON_TESTE"
+    }
+  },
+
+  "integration_hostinger": {
+    "methode_recommandee": "iframe",
+    "code_integration": "<iframe src=\"https://saloua40.github.io/formulaire_pdf/\" width=\"100%\" height=\"1200px\" frameborder=\"0\" allow=\"clipboard-write\"></iframe>",
+    "alternatives": [
+      "Lien direct vers GitHub Pages",
+      "Embed responsive avec padding-bottom"
+    ],
+    "points_attention": [
+      "Vérifier que Hostinger autorise les iframes externes",
+      "Ajuster la hauteur selon le contenu visible",
+      "Tester sur tous les appareils (mobile, tablette, desktop)"
+    ]
+  },
+
+  "risques_identifies": {
+    "adobe_api_gratuite": {
+      "description": "Limite d'utilisation de l'API gratuite Adobe",
+      "impact": "MOYEN",
+      "solution": "Surveiller l'usage, passer en payant si dépassement",
+      "probabilite": "FAIBLE"
+    },
+    "emailjs_quota": {
+      "description": "Plan gratuit EmailJS limité à 200 emails/mois",
+      "impact": "MOYEN",
+      "solution": "Utiliser un backend custom ou passer en plan payant",
+      "probabilite": "MOYENNE"
+    },
+    "cors_hostinger": {
+      "description": "Possible blocage CORS de Hostinger vers GitHub Pages",
+      "impact": "FAIBLE",
+      "solution": "Les deux sont des domaines HTTPS publics, devrait fonctionner",
+      "probabilite": "TRES_FAIBLE"
+    },
+    "taille_fichiers": {
+      "description": "Les 8 pièces jointes (max 5MB chacune) peuvent dépasser limites email",
+      "impact": "ELEVE",
+      "solution": "Utiliser un service de stockage cloud (Drive, Dropbox) pour les PJ",
+      "probabilite": "MOYENNE"
+    }
+  },
+
+  "actions_immediates": [
+    "1. Uploader les 4 fichiers créés vers GitHub (index.html, style.css, script.js, README.md)",
+    "2. Obtenir clé Adobe PDF Embed API (gratuit, 5 minutes)",
+    "3. Tester l'URL https://saloua40.github.io/formulaire_pdf/",
+    "4. Si PDF s'affiche : procéder à l'intégration Hostinger",
+    "5. Si besoin d'envoi email : configurer EmailJS"
+  ],
+
+  "note_finale": "✅ Tous les fichiers sont prêts. Il ne reste plus qu'à les uploader sur GitHub et configurer les APIs (Adobe + EmailJS)."
+}
