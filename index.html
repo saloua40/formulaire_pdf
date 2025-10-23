@@ -1,12 +1,147 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Formulaire PDF Intégré</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire AGEFICE 2025 - Demande de Financement Formation</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Adobe PDF Embed API -->
+    <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
 </head>
 <body>
-  <h1>Formulaire PDF à remplir</h1>
-  <iframe src="https://github.com/saloua40/formulaire_pdf/blob/main/AGEFICE-Demande-de-prise-en-charge-2025%20PRE%20REMPLIE.pdf" width="100%" height="900px"></iframe>
-  <p><a href="https://github.com/saloua40/formulaire_pdf/blob/main/AGEFICE-Demande-de-prise-en-charge-2025%20PRE%20REMPLIE.pdf" download>Télécharger le PDF</a></p>
+    <div class="container">
+        <header class="header">
+            <div class="logo-section">
+                <h1>🎓 Formulaire AGEFICE 2025</h1>
+                <p class="subtitle">Demande de Financement d'Action de Formation</p>
+            </div>
+        </header>
+
+        <div class="progress-section">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text">
+                <span id="progressText">Formulaire à 0% complété</span>
+            </div>
+            <div class="missing-items" id="missingItems">
+                ⚠️ Manque: 61 champs obligatoires + 8 pièces jointes
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Section PDF -->
+            <div class="pdf-section">
+                <h2>📄 Formulaire Officiel AGEFICE</h2>
+                <p class="instruction">Cliquez directement dans les champs du PDF pour les remplir</p>
+                <div id="adobe-dc-view" class="pdf-viewer"></div>
+            </div>
+
+            <!-- Section Pièces Jointes -->
+            <div class="attachments-section">
+                <h2>📎 Pièces Jointes Obligatoires (8)</h2>
+                <p class="instruction">Formats acceptés: PDF, JPG, PNG - Taille max: 5MB par fichier</p>
+                
+                <div class="attachments-grid">
+                    <div class="attachment-item">
+                        <label for="pj1">1. Attestation CFP</label>
+                        <input type="file" id="pj1" accept=".pdf,.jpg,.jpeg,.png" required>
+                        <span class="status" id="status1">❌ Non uploadé</span>
+                    </div>
+
+                    <div class="attachment-item">
+                        <label for="pj2">2. Pièce d'identité</label>
+                        <input type="file" id="pj2" accept=".pdf,.jpg,.jpeg,.png" required>
+                        <span class="status" id="status2">❌ Non uploadé</span>
+                    </div>
+
+                    <div class="attachment-item">
+                        <label for="pj3">3. Programme de formation</label>
+                        <input type="file" id="pj3" accept=".pdf,.jpg,.jpeg,.png" required>
+                        <span class="status" id="status3">❌ Non uploadé</span>
+                    </div>
+
+                    <div class="attachment-item">
+                        <label for="pj4">4. Convention de formation</label>
+                        <input type="file" id="pj4" accept=".pdf,.jpg,.jpeg,.png" required>
+                        <span class="status" id="status4">❌ Non uploadé</span>
+                    </div>
+
+                    <div class="attachment-item">
+                        <label for="pj5">5. Devis détaillé</label>
+                        <input type="file" id="pj5" accept=".pdf,.jpg,.jpeg,.png" required>
+                        <span class="status" id="status5">❌ Non uploadé</span>
+                    </div>
+
+                    <div class="attachment-item">
+                        <label for="pj6">6. RIB</label>
+                        <input type="file" id="pj6" accept=".pdf,.jpg,.jpeg,.png" required>
+                        <span class="status" id="status6">❌ Non uploadé</span>
+                    </div>
+
+                    <div class="attachment-item">
+                        <label for="pj7">7. Attestation URSSAF</label>
+                        <input type="file" id="pj7" accept=".pdf,.jpg,.jpeg,.png" required>
+                        <span class="status" id="status7">❌ Non uploadé</span>
+                    </div>
+
+                    <div class="attachment-item">
+                        <label for="pj8">8. Justificatif d'activité</label>
+                        <input type="file" id="pj8" accept=".pdf,.jpg,.jpeg,.png" required>
+                        <span class="status" id="status8">❌ Non uploadé</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section RGPD -->
+            <div class="rgpd-section">
+                <label class="rgpd-checkbox">
+                    <input type="checkbox" id="rgpdConsent" required>
+                    <span class="checkmark"></span>
+                    J'accepte le traitement de mes données personnelles pour le traitement de cette demande AGEFICE. 
+                    Mes données seront envoyées directement par email et ne seront pas stockées sur ce serveur.
+                    <a href="#" class="rgpd-link">En savoir plus</a>
+                </label>
+            </div>
+
+            <!-- Bouton de validation -->
+            <div class="submit-section">
+                <button id="submitBtn" class="submit-btn" disabled>
+                    <span class="btn-icon">📧</span>
+                    Valider et Envoyer la Demande
+                </button>
+                <p class="submit-help">Le bouton sera activé quand tout sera complété</p>
+            </div>
+        </div>
+
+        <!-- Modal de confirmation -->
+        <div id="confirmModal" class="modal">
+            <div class="modal-content">
+                <h3>Confirmer l'envoi</h3>
+                <p>Êtes-vous sûr(e) de vouloir envoyer votre demande AGEFICE ?</p>
+                <p class="warning">⚠️ Cette action est définitive et irréversible.</p>
+                <div class="modal-buttons">
+                    <button id="cancelBtn" class="btn-cancel">Annuler</button>
+                    <button id="confirmBtn" class="btn-confirm">Oui, envoyer</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de succès -->
+        <div id="successModal" class="modal">
+            <div class="modal-content success">
+                <h3>✅ Demande envoyée avec succès !</h3>
+                <p>Votre demande de financement AGEFICE a été transmise.</p>
+                <p>Vous recevrez un email de confirmation sous peu.</p>
+                <button id="closeSuccessBtn" class="btn-confirm">Fermer</button>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2025 - Formulaire AGEFICE sécurisé - Conforme RGPD</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
