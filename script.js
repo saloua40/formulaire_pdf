@@ -1,4 +1,4 @@
-// Configuration et variables globales
+a// Configuration et variables globales
 const ADOBE_CLIENT_ID = '1933aa64c4e04bd0a8261f9e6ff445cc'; // 
 const EMAIL_SERVICE_ID = 'service_imj8k36'; // 
 const EMAIL_TEMPLATE_ID = 'template_b2qpm0i';
@@ -78,7 +78,7 @@ function initializePDF() {
         });
 
         // Configuration pour GitHub Pages - URL du PDF
-        const pdfUrl = 'const pdfUrl = 'const pdfUrl = './AGEFICE-Demande-de-prise-en-charge-2025 PRE REMPLIE.pdf'; // 
+        const pdfUrl = 'const pdfUrl = './AGEFICE-Demande-de-prise-en-charge-2025 PRE REMPLIE.pdf'; // 
         
         // PrÃ©visualiser le PDF
         adobeDCView.previewFile({
