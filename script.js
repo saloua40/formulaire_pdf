@@ -78,7 +78,7 @@ function initializePDF() {
         });
 
         // Configuration pour GitHub Pages - URL du PDF
-        const pdfUrl = 'const pdfUrl = 'https://github.com/saloua40/formulaire_pdf/raw/main/AGEFICE-Demande-de-prise-en-charge-2025%20PRE%20REMPLIE.pdf';'; // Nom exact du fichier sur GitHub
+        const pdfUrl = 'const pdfUrl = 'const pdfUrl = './AGEFICE-Demande-de-prise-en-charge-2025 PRE REMPLIE.pdf'; // 
         
         // PrÃ©visualiser le PDF
         adobeDCView.previewFile({
