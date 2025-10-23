@@ -1,8 +1,8 @@
 // Configuration et variables globales
-const ADOBE_CLIENT_ID = 'YOUR_ADOBE_CLIENT_ID'; // Ã€ remplacer par votre clÃ© API Adobe
-const EMAIL_SERVICE_ID = 'YOUR_EMAIL_SERVICE_ID'; // Ã€ configurer avec EmailJS
-const EMAIL_TEMPLATE_ID = 'YOUR_EMAIL_TEMPLATE_ID';
-const EMAIL_USER_ID = 'YOUR_EMAIL_USER_ID';
+const ADOBE_CLIENT_ID = '1933aa64c4e04bd0a8261f9e6ff445cc'; // 
+const EMAIL_SERVICE_ID = 'service_imj8k36'; // 
+const EMAIL_TEMPLATE_ID = 'template_b2qpm0i';
+const EMAIL_USER_ID = '1a2Jh7h3J4YhNyn4';
 
 // Ã‰tat du formulaire
 let formState = {
